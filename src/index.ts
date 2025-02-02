@@ -8,11 +8,9 @@ const app = express()
 
 app.get('/',(req,res) => {
     res.json({
-        'msg' : "hello"
+        'msg' : "hello world"
     })
 })
-
-// this is kk
 
 app.listen(port,() => {
     console.log('listening to port:',port);
