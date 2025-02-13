@@ -8,4 +8,6 @@ user.get('/',(req,res) => {
     })
 })
 
+
+
 export const userRouter = user
