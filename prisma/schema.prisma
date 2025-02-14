@@ -41,6 +41,7 @@ model Doubt {
   author_id    Int
   picker_id    Int?
   problem_id   Int
+  resolved     Boolean  @default(false)
   // When multiple foreign keys reference the same table, we need named relatations.
   // here picked_id and problem_id are the foreign keys.
   created_by   User     @relation(name: "UserCreatedDoubts",fields: [author_id],references: [id])  

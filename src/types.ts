@@ -5,4 +5,10 @@ export type ProblemBody = {
     tags? : string[]
 }
 
+export type DoubtBody = {
+    query : string,
+    problem_id : number,
+    author_id : number
+}
+
 export type UpdateProblemBody = Partial<ProblemBody>

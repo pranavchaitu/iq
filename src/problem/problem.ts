@@ -60,7 +60,7 @@ problem.put('/update',async (req,res) => {
 
 // =>/problem/delete
 problem.delete('/delete',async (req,res) => {
-    const id : number = Number(req.headers.id)!
+    const id : number = Number(req.headers.id)
     if(!id) {
         res.status(400).json({
             message : 'bad request'
