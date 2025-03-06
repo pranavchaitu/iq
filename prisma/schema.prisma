@@ -15,36 +15,42 @@ datasource db {
 
 model User {
   id              Int       @id @default(autoincrement())
-  password        String
+  name            String    @unique
   email           String    @unique
-  name            String
-  iq_rating       Int  
-  tags            String[]
-  problems_solved Problem[]
-  doubts          Doubt[]   @relation("UserCreatedDoubts")
-  picked_doubts   Doubt[]   @relation("UserPickedDoubts")
+  rating          Int       @default(0)
+  solved          Problem[]
+  doubts_created  Doubt[]   @relation("UserCreatedDoubts")
+  doubts_assigned Doubt[]   @relation("UserAssignedDoubts")
 }
 
+// the one who creates the question(actually deligated to AI)
+model Teacher {
+  id               Int       @id @default(autoincrement())
+  name             String    @unique
+  email            String    @unique
+  created_problems Problem[]
+}
+
+// only created by the admin/ teacher
 model Problem {
-  id          Int       @id @default(autoincrement())
-  name        String    @unique
+  id          Int     @id @default(autoincrement())
+  title       String
   description String
-  tags        String[]
+  userId      Int
+  usersSolved User[]
   doubts      Doubt[]
-  user_id     Int?
-  user        User?     @relation(fields: [user_id],references: [id])
+  creatorId   Int
+  creator     Teacher @relation(fields: [creatorId], references: [id])
 }
 
 model Doubt {
-  id           Int      @id @default(autoincrement())
-  query        String
-  author_id    Int
-  picker_id    Int?
-  problem_id   Int
-  resolved     Boolean  @default(false)
-  // When multiple foreign keys reference the same table, we need named relatations.
-  // here picked_id and problem_id are the foreign keys.
-  created_by   User     @relation(name: "UserCreatedDoubts",fields: [author_id],references: [id])  
-  picked_by    User?    @relation(name: "UserPickedDoubts",fields: [picker_id],references: [id])  
-  problem      Problem  @relation(fields: [problem_id],references: [id])   
+  id        Int     @id @default(autoincrement())
+  title     String
+  problemId Int
+  creatorId Int
+  assignees User[]  @relation("UserAssignedDoubts")
+  problem   Problem @relation(fields: [problemId], references: [id])
+  creator   User    @relation(name: "UserCreatedDoubts", fields: [creatorId], references: [id])
 }
+
+// FEATURE : CAN ADD EXPLICIT MANY-TO-MANY FOR ADDITIONAL METADATA(LIKE SOLVED AT) IF NEED BE
