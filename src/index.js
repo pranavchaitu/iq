@@ -7,6 +7,8 @@
  */
 
 import express from 'express';
+import path from 'path';
+import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -25,8 +27,15 @@ connectDB();
 
 // create an express app
 const app = express();
+const __dirname = path.resolve();
+const views_dir = path.join(__dirname, 'src' , 'views');
+
 const PORT = process.env.PORT || 5000;
+
+app.use(cors())
 app.use(express.json()); // middleware to parse json data
+
+// set view 
 
 
 // user routes
