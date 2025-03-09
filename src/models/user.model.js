@@ -22,12 +22,15 @@ import mongoose from "mongoose";
 
 
 const user_schema = new mongoose.Schema({
-
     username : {
         type : String ,
         required : true ,
         unique : true
     },
+    avatar : {
+        type : String ,
+        default : "https://www.gravatar.com/avatar/"
+    } ,
     email : {
         type : String ,
         required : true ,

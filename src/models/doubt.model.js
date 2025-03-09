@@ -4,6 +4,9 @@
  * 
  * @property {String} title - The title of the doubt
  * @property {String} description - The description of the doubt
+ * @property {String} answer     -  the answer of the doubt
+ * 
+ * @property {Boolean} active - The problem related to the doubt
  * 
  * @property {Problem} problemId - The problem related to the doubt
  * @property {Student} studentId - The student who asked the doubt
@@ -23,19 +26,23 @@ const doubt_schema = new mongoose.Schema({
         type : String ,
         required : true
     },
+    active : {
+        type : Boolean ,
+        default : true
+    },
     problemId : {
         type : mongoose.Schema.Types.ObjectId ,
         ref : "Problem" ,
         required : true
     },
-    studentId : {
+    userId : {
         type : mongoose.Schema.Types.ObjectId ,
-        ref : "Student" ,
+        ref : "User" ,
         required : true
     },
     assignedId : {
         type : mongoose.Schema.Types.ObjectId ,
-        ref : "Student" ,
+        ref : "User" ,
     }
 } , { timestamps: true });
 
