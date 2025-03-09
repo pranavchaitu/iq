@@ -28,5 +28,11 @@
         "email": "david.white@example.com",
         "password": "hashedpassword999",
         "createdProblems": []
+    },
+    {
+        "username": "ms_jane",
+        "email": "jane.doe@example.com",
+        "password": "hashedpassword111",
+        "createdProblems": []
     }
 ]
