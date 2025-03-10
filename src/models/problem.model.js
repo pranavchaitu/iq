@@ -61,7 +61,7 @@ const problem_schema = new mongoose.Schema({
     }],
     createrId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Teacher",
+        ref: "User",
         required: true
     }
 }, { timestamps: true });

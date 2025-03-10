@@ -45,6 +45,10 @@ const user_schema = new mongoose.Schema({
         default : 0 ,
         solved : 0
     } ,
+    isAdmin : {
+        type : Boolean ,
+        default : false
+    } ,
     solved : [{
         type : mongoose.Schema.Types.ObjectId ,
         ref : "Problem"

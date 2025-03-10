@@ -39,10 +39,13 @@ app.use(express.json()); // middleware to parse json data
 
 
 // user routes
+// app.user("/api/login");
+// app.user("/api/register");
+
 app.use("/api/users" , user_route)
 app.use("/api/problems" , problem_route)
 app.use("/api/doubts" , doubt_route)
-app.use("/api/teachers" , teacher_route)
+// app.use("/api/teachers" , teacher_route)
 
 
 app.listen(PORT, () => {

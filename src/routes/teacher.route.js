@@ -1,3 +1,8 @@
+/*
+    This the removed Schema
+*/
+
+
 import { Router } from "express";  
 import teacher_controller  from "../controllers/teacher.controller.js";
 
